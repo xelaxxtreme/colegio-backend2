@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sistema-colegio-4a695",
+  "private_key_id": "ac2677ea56b7a65883e1c7be6aa678b3b5a8858f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwHw0DSj9r4a5d\nxvriAMsjHs7kBv5EeHmlk3gXADX16xFDWAInbk6wJYEjSwzZuFn4A3gOLx7Pqri/\nEzBLb2uPEcSVz71mG1ve3uAT18bqLo9sG1SwWmEhSUF37O6LUwKB38nmMNnthHdO\n0vd13NgZ2m07XXmlolOSNGHUj2xGI3j3EUEDqJ7Fcn+tx0ZJvD6wgcDijte3xS6P\nrFzponNaPu91dNOpDLqyMVVWY/vE/fdMPrTa5kamk/j2+LduBqjzSzao29EVOtHA\n8D9ZkYLVyB5qF7ZZzYuxBauBrQCK/oB9KBEbzOmiVbILS60emz8W3vTtQX1qa+e1\nXh8+DR4XAgMBAAECggEAKaE9TzDGqvZuY8Y72R385jFLEAVDJuYfQu8HrNAk8Rr+\nOp/b6nwdZ2+GBdSglfoIciJHx3qF2upsvuWHPd15XBkEEbFIAJGo9pZR+v6/Cu20\ngwY2z3SdjuOk8Pb1L8OQTSibraiQap8sIFqnmZl5DytdNHIU5fznqiBtm3PHURB+\nk0qsiijU+BGLoNGajnrAbau8bM3R4215LG2SJLK2s1uwskp2vMBxgrgURd9fQtX2\nSbYAow8gSOa1708VC08IXr/FvhZSepUFA6bhJ7gmx/uYKIRGVJ//3yalWkiMaN6Q\nUHwL9G+dRXDFNZeVUxnUfmL+7MLaiqYxDwLPpduCyQKBgQDqLVDnuYocPxZ1Lfep\nOBvCD3zBEyUGuaEDlrcDv4EQ8FPlqKfjtmyCU60TuJ2wq2H1SOad72+Buqx6iIRT\n+Cmtrml9x4KpGaqhmSbpMVwXV8pVfS4TgnHNCD4jiES07iBqIi0d8XCuAOQ/JNO2\nrv1/8hk2O6Oa0o/w8hOPkl/iEwKBgQDAiLfwooaR+mDOMN0gGZZTNWKADrPsPVRl\nghwPAlr4UUFZ6sJPj+G1EdPYJmHQkytANGuzJyilfTcNKfBPIJbVytY+xiVWs9VW\nofq8MYpnRp+8EQwYQhezPM7tJVnXJinngRDr/D590LS/U2ShANM/Q5W3S1e6ehnO\n2ZHxAzo0bQKBgHL0GdIWj0h8Y57UGM31oBKsHZZ9umBJwVOMqXxqhoX1I4oKN5gd\nlbiIMN8MckQmbSjGR4bh4X/yTfa8ixDZMkRy6I/43xf5ZHx9PM+eDlHbI5TBpVuo\nXgrC8BXrL6cNedX/vtwDCEgyYdjpUBBOaFxlUKEBt7cpg8VIX/fLZ8wHAoGBAItH\n3Fj2Ggesay9+Zdj86aSUMAeXm01BKLauIwIwoAKXNYGItLy9x3gnx2rMiWJLtLQj\nt+3IXD0rkhGxzyhO2Q8cR1TuHsDUI3cigrJ13DvN+WwhoPBDj8WYLdGcfZuI/jN9\nSPKObd6yhq8J8vgOEsPnbn1Ewdgi0Fy1REBoJ0kZAoGAc00M26KmG1XZ5D9Wcc65\nnl7bRlHFuMLEc091ufCGZmsL6baJIM2UmP8w0ihzgbRaJmq5tNQju0vhHAcL3CqW\nKHN6pSy9CEYu7x8VlgKbl7L1dabFuWO7x7VC8zFhcrvkR17zk7JLyRV+sc//lb2r\nMH7JhIxH/fRtj9mL0qfi3Fo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-r2ohh@sistema-colegio-4a695.iam.gserviceaccount.com",
+  "client_id": "115209749239730423221",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-r2ohh%40sistema-colegio-4a695.iam.gserviceaccount.com"
+}
