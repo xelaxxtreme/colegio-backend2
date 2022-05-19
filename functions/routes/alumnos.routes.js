@@ -54,41 +54,84 @@ router.get("/alumnos",async(req,res)=>{
         return res.status(500).json();
     }
 });
-//busaqueda de alumno por id
-router.get("/alumnos/id/:id",async(req,res)=>{
-    try {
-        const snapshot = await db.collection("alumnos").doc(req.params.id).get();
-        const userData = snapshot.data();
-        return res.status(200).json(userData);
-    } catch (error) {
-        return res.status(500).send(error);
-    }
-});
-
 //busqueda de alumno por dni
 router.get("/alumnos/dni/:dni",async(req,res)=>{
     try {
         const snapshot = await db.collection("alumnos").where('dni','==',req.params.dni).get();
-        const userData = snapshot.data();
-        return res.status(200).json(userData);
+        const documentos = snapshot.docs;
+        const respuesta = documentos.map(doc => ({
+            id: doc.id,
+            nombres: doc.data().nombres,
+            apellidoPaterno: doc.data().apellidoPaterno,
+            apellidoMaterno: doc.data().apellidoMaterno,
+            sexo:doc.data().sexo,
+            dni: doc.data().dni,
+            fechaNacimiento: doc.data().fechaNacimiento,
+            celular:doc.data().celular,
+            email: doc.data().email,
+            datosDelPadre: doc.data().datosDelPadre,
+            datosDelaMadre: doc.data().datosDelaMadre,
+            direccion: doc.data().direccion
+        }))
+        return res.status(200).json(respuesta);
+    } catch (error) {
+        
+        return res.status(500).send(error);
+    }
+});
+//busqueda de alumno por nombre
+router.get("/alumnos/nombres/:nombres",async(req,res)=>{
+    try {
+        const snapshot = await db.collection("alumnos").where('nombres','==',req.params.nombres).get();
+        const documentos = snapshot.docs;
+        const respuesta = documentos.map(doc => ({
+            id: doc.id,
+            nombres: doc.data().nombres,
+            apellidoPaterno: doc.data().apellidoPaterno,
+            apellidoMaterno: doc.data().apellidoMaterno,
+            sexo:doc.data().sexo,
+            dni: doc.data().dni,
+            fechaNacimiento: doc.data().fechaNacimiento,
+            celular:doc.data().celular,
+            email: doc.data().email,
+            datosDelPadre: doc.data().datosDelPadre,
+            datosDelaMadre: doc.data().datosDelaMadre,
+            direccion: doc.data().direccion
+        }))
+        return res.status(200).json(respuesta);
+    } catch (error) {
+        
+        return res.status(500).send(error);
+    }
+});
+//busqueda de alumno por dni
+router.get("/alumnos/apellido/:apellidoPaterno",async(req,res)=>{
+    try {
+        const snapshot = await db.collection("alumnos").where('apellidoPaterno','==',req.params.apellidoPaterno).get();
+        const documentos = snapshot.docs;
+        const respuesta = documentos.map(doc => ({
+            id: doc.id,
+            nombres: doc.data().nombres,
+            apellidoPaterno: doc.data().apellidoPaterno,
+            apellidoMaterno: doc.data().apellidoMaterno,
+            sexo:doc.data().sexo,
+            dni: doc.data().dni,
+            fechaNacimiento: doc.data().fechaNacimiento,
+            celular:doc.data().celular,
+            email: doc.data().email,
+            datosDelPadre: doc.data().datosDelPadre,
+            datosDelaMadre: doc.data().datosDelaMadre,
+            direccion: doc.data().direccion
+        }))
+        return res.status(200).json(respuesta);
     } catch (error) {
         
         return res.status(500).send(error);
     }
 });
 
-//eliminar
-router.delete("/alumnos/:dni",async(req,res)=>{
-    try {
-        const evento = db.collection("alumnos").doc(req.params.dni);
-        await evento.delete();
-        return res.status(200).json();
-    } catch (error) {
-        return res.status(500).json();
-    }
-});
-
-router.get("/alumnos/:id",async(req,res)=>{
+//busaqueda de alumno por id
+router.get("/alumnos/id/:id",async(req,res)=>{
     try {
         const snapshot = await db.collection("alumnos").doc(req.params.id).get();
         const userData = snapshot.data();
@@ -110,21 +153,21 @@ router.delete("/alumnos/:id",async(req,res)=>{
 });
 
 //actualizar
-router.put("/alumnos/:dni",async(req,res)=>{
+router.put("/alumnos/:id",async(req,res)=>{
     try {
-        const evento = db.collection("alumnos").doc(req.params.dni);
+        const evento = db.collection("alumnos").doc(req.params.id);
         await evento.update({
-            nombres: req.body.nombres,
-            apellidoPaterno: req.body.apellidoPaterno,
-            apellidoMaterno: req.body.apellidoMaterno,
-            sexo:req.body.sexo,
-            dni: req.body.dni,
-            fechaNacimiento: req.body.fechaNacimiento,
+            nombres: req.body.nombres ?? null,
+            apellidoPaterno: req.body.apellidoPaterno ?? null,
+            apellidoMaterno: req.body.apellidoMaterno ?? null,
+            sexo:req.body.sexo ?? null,
+            dni: req.body.dni ?? null,
+            fechaNacimiento: req.body.fechaNacimiento ?? null,
             celular:req.body.celular ?? null,
             email: req.body.email ?? null,
             datosDelPadre: req.body.datosDelPadre ?? null,
             datosDelaMadre: req.body.datosDelaMadre ?? null,
-            direccion: req.body.direccion ?? null
+            direccion: req.body.direccion ?? null,
         });
         return res.status(200).json();
     } catch (error) {
@@ -132,26 +175,5 @@ router.put("/alumnos/:dni",async(req,res)=>{
     }
 });
 
-router.put("/alumnos/:id",async(req,res)=>{
-    try {
-        const evento = db.collection("alumnos").doc(req.params.id);
-        await evento.update({
-            nombres: req.body.nombres,
-            apellidoPaterno: req.body.apellidoPaterno,
-            apellidoMaterno: req.body.apellidoMaterno,
-            sexo:req.body.sexo,
-            dni: req.body.dni,
-            fechaNacimiento: req.body.fechaNacimiento,
-            celular:req.body.celular ?? null,
-            email: req.body.email ?? null,
-            datosDelPadre: req.body.datosDelPadre ?? null,
-            datosDelaMadre: req.body.datosDelaMadre ?? null,
-            direccion: req.body.direccion ?? null
-        });
-        return res.status(200).json();
-    } catch (error) {
-        return res.status(500).json();
-    }
-});
 
 module.exports = router;

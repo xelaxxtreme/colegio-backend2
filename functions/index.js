@@ -15,6 +15,7 @@ admin.initializeApp({
 
 
 app.use(require("./routes/alumnos.routes"));
+app.use(require("./routes/apoderado.routes"));
 app.use(require("./routes/salones.routes"));
 
 exports.app = functions.https.onRequest(app);
