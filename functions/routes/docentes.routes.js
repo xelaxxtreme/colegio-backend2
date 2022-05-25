@@ -18,7 +18,7 @@ router.post("/docentes",async(req,res)=>{
             celular: req.body.celular ?? null,
             dni: req.body.dni ?? null,
             email: req.body.email ?? null,
-            especialidad: req.body.espcialidad ?? null,
+            especialidad: req.body.especialidad ?? null,
             estadoCivil: req.body.estadoCivil ?? null,
             direccion: req.body.direccion ?? null
         });
@@ -38,12 +38,12 @@ router.get("/docentes",async(req,res)=>{
             nombres: doc.data().nombres,
             apellidos: doc.data().apellidos,
             sexo: doc.data().sexo,
-            celular: doc.data().celular ?? null,
+            celular: doc.data().celular,
             dni: doc.data().dni,
-            email: doc.data().email ?? null,
-            especialidad: doc.data().espcialidad ?? null,
-            estadoCivil: doc.data().estadoCivil ?? null,
-            direccion: doc.data().direccion ?? null
+            email: doc.data().email,
+            especialidad: doc.data().especialidad,
+            estadoCivil: doc.data().estadoCivil,
+            direccion: doc.data().direccion
         }));
         return res.status(200).json(respuesta);
     } catch (error) {
@@ -60,12 +60,12 @@ router.get("/docentes/dni/:dni",async(req,res)=>{
             nombres: doc.data().nombres,
             apellidos: doc.data().apellidos,
             sexo: doc.data().sexo,
-            celular: doc.data().celular ?? null,
+            celular: doc.data().celular,
             dni: doc.data().dni,
-            email: doc.data().email ?? null,
-            especialidad: doc.data().espcialidad ?? null,
-            estadoCivil: doc.data().estadoCivil ?? null,
-            direccion: doc.data().direccion ?? null
+            email: doc.data().email,
+            especialidad: doc.data().especialidad,
+            estadoCivil: doc.data().estadoCivil,
+            direccion: doc.data().direccion
         }))
         return res.status(200).json(respuesta);
     } catch (error) {
@@ -83,12 +83,12 @@ router.get("/docentes/nombres/:nombres",async(req,res)=>{
             nombres: doc.data().nombres,
             apellidos: doc.data().apellidos,
             sexo: doc.data().sexo,
-            celular: doc.data().celular ?? null,
+            celular: doc.data().celular,
             dni: doc.data().dni,
-            email: doc.data().email ?? null,
-            especialidad: doc.data().espcialidad ?? null,
-            estadoCivil: doc.data().estadoCivil ?? null,
-            direccion: doc.data().direccion ?? null
+            email: doc.data().email,
+            especialidad: doc.data().especialidad,
+            estadoCivil: doc.data().estadoCivil,
+            direccion: doc.data().direccion
         }))
         return res.status(200).json(respuesta);
     } catch (error) {
@@ -106,12 +106,12 @@ router.get("/docentes/apellido/:apellidoPaterno",async(req,res)=>{
             nombres: doc.data().nombres,
             apellidos: doc.data().apellidos,
             sexo: doc.data().sexo,
-            celular: doc.data().celular ?? null,
+            celular: doc.data().celular,
             dni: doc.data().dni,
-            email: doc.data().email ?? null,
-            especialidad: doc.data().espcialidad ?? null,
-            estadoCivil: doc.data().estadoCivil ?? null,
-            direccion: doc.data().direccion ?? null
+            email: doc.data().email,
+            especialidad: doc.data().especialidad,
+            estadoCivil: doc.data().estadoCivil,
+            direccion: doc.data().direccion
         }))
         return res.status(200).json(respuesta);
     } catch (error) {
@@ -132,9 +132,9 @@ router.get("/docentes/id/:id",async(req,res)=>{
 });
 
 //eliminar
-router.delete("/alumnos/:id",async(req,res)=>{
+router.delete("/docentes/:id",async(req,res)=>{
     try {
-        const evento = db.collection("alumnos").doc(req.params.id);
+        const evento = db.collection("docentes").doc(req.params.id);
         await evento.delete();
         return res.status(200).json();
     } catch (error) {
@@ -143,21 +143,19 @@ router.delete("/alumnos/:id",async(req,res)=>{
 });
 
 //actualizar
-router.put("/alumnos/:id",async(req,res)=>{
+router.put("/docentes/:id",async(req,res)=>{
     try {
-        const evento = db.collection("alumnos").doc(req.params.id);
+        const evento = db.collection("docentes").doc(req.params.id);
         await evento.update({
-            nombres: req.body.nombres ?? null,
-            apellidoPaterno: req.body.apellidoPaterno ?? null,
-            apellidoMaterno: req.body.apellidoMaterno ?? null,
-            sexo:req.body.sexo ?? null,
+            nombres: req.body.nombres?? null,
+            apellidos: req.body.apellidos ?? null ,
+            sexo:req.body.sexo ?? null ?? null,
+            celular: req.body.celular ?? null,
             dni: req.body.dni ?? null,
-            fechaNacimiento: req.body.fechaNacimiento ?? null,
-            celular:req.body.celular ?? null,
             email: req.body.email ?? null,
-            datosDelPadre: req.body.datosDelPadre ?? null,
-            datosDelaMadre: req.body.datosDelaMadre ?? null,
-            direccion: req.body.direccion ?? null,
+            especialidad: req.body.especialidad ?? null,
+            estadoCivil: req.body.estadoCivil ?? null,
+            direccion: req.body.direccion ?? null
         });
         return res.status(200).json();
     } catch (error) {

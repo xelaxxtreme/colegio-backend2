@@ -1,7 +1,6 @@
 const functions = require("firebase-functions");
 const express = require('express');
 const cors = require("cors");
-
 const app = express();
 
 app.use(cors());
@@ -17,5 +16,6 @@ admin.initializeApp({
 app.use(require("./routes/alumnos.routes"));
 app.use(require("./routes/apoderado.routes"));
 app.use(require("./routes/salones.routes"));
-
+app.use(require("./routes/docentes.routes"));
+app.use(require("./routes/matricula.routes"));
 exports.app = functions.https.onRequest(app);
