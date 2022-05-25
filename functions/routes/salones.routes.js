@@ -37,9 +37,9 @@ router.get("/salones",async(req,res)=>{
 
 router.get("/salones/:gradoSeccion",async(req,res)=>{
     try {
-        const snapshot = await db.collection("salones").doc(req.params.grado+req.params.seccion).get();
-        const userData = snapshot.data();
-        return res.status(200).json(userData);
+        const doc = await db.collection("salones").doc(req.params.gradoSeccion).get();
+        const item = doc.data();
+        return res.status(200).json(item);
     } catch (error) {
         return res.status(500).send(error);
     }

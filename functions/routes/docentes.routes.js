@@ -7,20 +7,19 @@ const db = admin.firestore();
 
 router.post("/docentes",async(req,res)=>{
     try{
-        const identificador = (await db.collection("docentes").get()).size
         await db.collection("docentes")
-        .doc("/"+ identificador +"/" )
+        .doc()
         .create({
-            id: identificador,
             nombres: req.body.nombres,
             apellidos: req.body.apellidos,
-            sexo:req.body.sexo ?? null,
+            sexo:req.body.sexo,
             celular: req.body.celular ?? null,
             dni: req.body.dni ?? null,
             email: req.body.email ?? null,
             especialidad: req.body.especialidad ?? null,
             estadoCivil: req.body.estadoCivil ?? null,
-            direccion: req.body.direccion ?? null
+            direccion: req.body.direccion ?? null,
+            imagen: req.body.imagen ?? null
         });
         return res.status(200).json();
     }catch (error){
@@ -43,7 +42,8 @@ router.get("/docentes",async(req,res)=>{
             email: doc.data().email,
             especialidad: doc.data().especialidad,
             estadoCivil: doc.data().estadoCivil,
-            direccion: doc.data().direccion
+            direccion: doc.data().direccion,
+            imagen: doc.data.imagen
         }));
         return res.status(200).json(respuesta);
     } catch (error) {
@@ -65,7 +65,8 @@ router.get("/docentes/dni/:dni",async(req,res)=>{
             email: doc.data().email,
             especialidad: doc.data().especialidad,
             estadoCivil: doc.data().estadoCivil,
-            direccion: doc.data().direccion
+            direccion: doc.data().direccion,
+            imagen: doc.data.imagen
         }))
         return res.status(200).json(respuesta);
     } catch (error) {
@@ -88,7 +89,8 @@ router.get("/docentes/nombres/:nombres",async(req,res)=>{
             email: doc.data().email,
             especialidad: doc.data().especialidad,
             estadoCivil: doc.data().estadoCivil,
-            direccion: doc.data().direccion
+            direccion: doc.data().direccion,
+            imagen: doc.data.imagen
         }))
         return res.status(200).json(respuesta);
     } catch (error) {
@@ -111,7 +113,8 @@ router.get("/docentes/apellido/:apellidoPaterno",async(req,res)=>{
             email: doc.data().email,
             especialidad: doc.data().especialidad,
             estadoCivil: doc.data().estadoCivil,
-            direccion: doc.data().direccion
+            direccion: doc.data().direccion,
+            imagen: doc.data.imagen
         }))
         return res.status(200).json(respuesta);
     } catch (error) {
@@ -155,7 +158,8 @@ router.put("/docentes/:id",async(req,res)=>{
             email: req.body.email ?? null,
             especialidad: req.body.especialidad ?? null,
             estadoCivil: req.body.estadoCivil ?? null,
-            direccion: req.body.direccion ?? null
+            direccion: req.body.direccion ?? null,
+            imagen: doc.data.imagen
         });
         return res.status(200).json();
     } catch (error) {

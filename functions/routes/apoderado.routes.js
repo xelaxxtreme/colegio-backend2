@@ -7,9 +7,8 @@ const db = admin.firestore();
 
 router.post("/apoderados",async(req,res)=>{
     try{
-        const identificador = (await db.collection("apoderados").get()).size
         await db.collection("apoderados")
-        .doc("/"+ identificador +"/" )
+        .doc()
         .create({
             id: identificador,
             nombres: req.body.nombres,

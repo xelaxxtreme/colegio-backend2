@@ -19,7 +19,6 @@ router.post("/matricula/aperturaSalon",async(req,res)=>{
             seccion: req.body.seccion,
             docente: req.body.docente,
             nivel:req.body.nivel
-
         });
         return res.status(200).json();
     }catch (error){
