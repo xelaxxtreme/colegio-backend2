@@ -60,7 +60,45 @@ router.post("/matricula/agregarAlumno",async(req,res)=>{
     }
 });
 
-//lista de matriculados
+//lista de salones aperturados por *año *turno y *nivel
+router.get("/matricula/listaSalones/*",async(req,res)=>{
+    try {
+        const matricula = db.collection('matricula').doc(req.query.año);
+        const nivelTurno = await matricula.collection(req.query.nivel+" "+req.query.turno).get();
+        const respuesta = nivelTurno.docs.map(doc => ({
+            id:doc.id,
+            docente: doc.data().docente,
+            grado: doc.data().grado,
+            seccion: doc.data().seccion,
+            docente: doc.data().docente,
+            turno: doc.data().turno
+        }));
+        return res.status(200).json(respuesta);
+    } catch (error) {
+        return res.status(500).json();
+    }
+});
+
+//lista de alumnos matriculads por *año, *turno y *nivel  
+router.get("/matricula/listaSalones/*",async(req,res)=>{
+    const auxNivelTurno = req.query.nivel+" "+req.query.turno;
+    try {
+        const matricula = db.collection('matricula').doc(req.query.año);
+        const nivelTurno = await matricula.collection(auxNivelTurno).doc().collection("alumnos").get();
+        const respuesta = nivelTurno.docs.map(doc => ({
+            id:doc.id,
+            docente: doc.data().docente,
+            grado: doc.data().grado,
+            seccion: doc.data().seccion,
+            docente: doc.data().docente,
+            turno: doc.data().turno
+        }));
+        return res.status(200).json(respuesta);
+    } catch (error) {
+        return res.status(500).json();
+    }
+});
+//lista de matriculados por año turno nivel 
 router.get("/matricula/listaMatriculados/:salon",async(req,res)=>{
     try {
         const query = db.collection("matricula").doc();

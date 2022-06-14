@@ -1,9 +1,12 @@
 const {Router} = require("express");
 const { firestore } = require("firebase-admin");
 const router = Router();
+const multer = require("multer");
 
 var admin = require("firebase-admin");
 const db = admin.firestore();
+
+const bucket = admin.storage().bucket("gs://sistema-colegio-4a695.appspot.com");
 
 router.post("/alumnos",async(req,res)=>{
     try{
@@ -31,31 +34,6 @@ router.post("/alumnos",async(req,res)=>{
     }
 });
 
-router.get("/alumnos",async(req,res)=>{
-    try {
-        const query = db.collection("alumnos");
-        const querySnapshot = await query.get();
-        const documentos = querySnapshot.docs;
-        const respuesta = documentos.map(doc => ({
-            id: doc.id,
-            nombres: doc.data().nombres,
-            apellidoPaterno: doc.data().apellidoPaterno,
-            apellidoMaterno: doc.data().apellidoMaterno,
-            sexo:doc.data().sexo,
-            dni: doc.data().dni,
-            fechaNacimiento: doc.data().fechaNacimiento,
-            celular:doc.data().celular,
-            email: doc.data().email,
-            datosDelPadre: doc.data().datosDelPadre,
-            datosDelaMadre: doc.data().datosDelaMadre,
-            direccion: doc.data().direccion,
-            imagen:doc.data().imagen,
-        }));
-        return res.status(200).json(respuesta);
-    } catch (error) {
-        return res.status(500).json();
-    }
-});
 //busqueda de alumno por dni
 router.get("/alumnos/dni/:dni",async(req,res)=>{
     try {
